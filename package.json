@@ -22,7 +22,7 @@
   ],
   "license": "MIT",
   "bugs": {
-    "https://github.com/heXeo/node-i2c/issues"
+    "url": "https://github.com/heXeo/node-i2c/issues"
   },
   "homepage": "https://github.com/heXeo/node-i2c",
   "private": false,
