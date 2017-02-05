@@ -1,5 +1,5 @@
 {
-  "name": "@hexeo/node-i2c",
+  "name": "@hexeo/i2c",
   "version": "1.0.0",
   "description": "",
   "main": "lib/exports.js",
