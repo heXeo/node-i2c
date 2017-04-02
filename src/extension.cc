@@ -68,9 +68,9 @@ NAN_MODULE_INIT(Device::Init) {
   SetPrototypeMethod(tpl, "read", read);
   SetPrototypeMethod(tpl, "readReg8", readReg8);
   SetPrototypeMethod(tpl, "readReg16", readReg16);
-  SetPrototypeMethod(tpl, "write", read);
-  SetPrototypeMethod(tpl, "writeReg8", readReg8);
-  SetPrototypeMethod(tpl, "writeReg16", readReg16);
+  SetPrototypeMethod(tpl, "write", write);
+  SetPrototypeMethod(tpl, "writeReg8", writeReg8);
+  SetPrototypeMethod(tpl, "writeReg16", writeReg16);
 
   constructor().Reset(Nan::GetFunction(tpl).ToLocalChecked());
   Nan::Set(target, Nan::New("Device").ToLocalChecked(),
@@ -156,7 +156,7 @@ NAN_METHOD(Device::writeReg8) {
   ASSERT_ARGUMENT_TYPE(1, Uint32);
 
   uint8_t reg = GET(0, Uint32);
-  uint8_t in = GET(0, Uint32);
+  uint8_t in = GET(1, Uint32);
   Device* device = Nan::ObjectWrap::Unwrap<Device>(info.Holder());
 
   if (i2c_write_reg8(device->fd, reg, in) < 0) {
@@ -172,7 +172,7 @@ NAN_METHOD(Device::writeReg16) {
   ASSERT_ARGUMENT_TYPE(1, Uint32);
 
   uint8_t reg = GET(0, Uint32);
-  uint16_t in = GET(0, Uint32);
+  uint16_t in = GET(1, Uint32);
   Device* device = Nan::ObjectWrap::Unwrap<Device>(info.Holder());
 
   if (i2c_write_reg16(device->fd, reg, in) < 0) {
