@@ -82,7 +82,7 @@ int32_t i2c_read(int32_t fd, uint8_t* out) {
 int32_t i2c_read_reg8(int32_t fd, uint8_t reg, uint8_t* out) {
   union i2c_smbus_data data;
 
-  if (i2c_smbus_access(fd, I2C_SMBUS_READ, reg, I2C_SMBUS_BYTE, &data) < 0) {
+  if (i2c_smbus_access(fd, I2C_SMBUS_READ, reg, I2C_SMBUS_BYTE_DATA, &data) < 0) {
     return -1;
   }
 
